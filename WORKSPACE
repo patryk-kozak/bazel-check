@@ -1,3 +1,5 @@
+workspace(name = "bzl_ndn")
+
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 http_archive(
@@ -9,6 +11,11 @@ http_archive(
     ],
 )
 
+load("@io_bazel_rules_go//go:deps.bzl", "go_register_toolchains", "go_rules_dependencies")
+
+go_rules_dependencies()
+go_register_toolchains(version = "host")
+
 http_archive(
     name = "bazel_gazelle",
     sha256 = "de69a09dc70417580aabf20a28619bb3ef60d038470c7cf8442fafcf627c21cb",
@@ -18,11 +25,7 @@ http_archive(
     ],
 )
 
-load("@io_bazel_rules_go//go:deps.bzl", "go_register_toolchains", "go_rules_dependencies")
+
 load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies")
-
-go_rules_dependencies()
-
-go_register_toolchains(version = "1.17.6")
 
 gazelle_dependencies()

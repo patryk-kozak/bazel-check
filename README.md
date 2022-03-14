@@ -5,4 +5,5 @@
 
 ## Bazel
 `bazel run //:gazelle`
+
 `bazel run //ndn`

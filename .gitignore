@@ -1,4 +1,7 @@
-bazel-output
-bazel-cache
-bazel-root
+bazel-output/
+bazel-bazel-check
+bazel-bin
+bazel-testlogs
+bazel-out
+
 .shell-bazelrc
