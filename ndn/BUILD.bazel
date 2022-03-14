@@ -5,6 +5,7 @@ go_library(
     srcs = ["main.go"],
     importpath = "github.com/patryk-kozak/bzl-ndn/ndn",
     visibility = ["//visibility:private"],
+    deps = ["@com_github_alexflint_go_arg//:go_default_library"],
 )
 
 go_binary(

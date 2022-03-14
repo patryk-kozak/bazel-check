@@ -4,7 +4,8 @@ let
 in
 pkgs.mkShell {
   buildInputs = with pkgs; [
-    unstable.bazel_5
+    bazel_4
+    bazel-buildtools
     git
     go_1_17
   ];

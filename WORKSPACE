@@ -2,6 +2,12 @@ workspace(name = "bzl_ndn")
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
+# TODO:
+# check before running 
+# /home/hackbee/.cache/bazel/_bazel_hackbee/install/931d2cae65e6b56271b36503c62cdec6/embedded_tools/platforms/BUILD
+# check after running //:gazelle
+# why it is getting corrupted
+
 http_archive(
     name = "io_bazel_rules_go",
     sha256 = "d6b2513456fe2229811da7eb67a444be7785f5323c6708b38d851d2b51e54d83",
@@ -14,6 +20,7 @@ http_archive(
 load("@io_bazel_rules_go//go:deps.bzl", "go_register_toolchains", "go_rules_dependencies")
 
 go_rules_dependencies()
+
 go_register_toolchains(version = "host")
 
 http_archive(
@@ -25,7 +32,10 @@ http_archive(
     ],
 )
 
-
 load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies")
+load("//:deps.bzl", "go_dependencies")
+
+# gazelle:repository_macro deps.bzl%go_dependencies
+go_dependencies()
 
 gazelle_dependencies()
