@@ -1,0 +1,4 @@
+bazel-output
+bazel-cache
+bazel-root
+.shell-bazelrc
