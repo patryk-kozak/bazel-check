@@ -1,16 +1,16 @@
 package main
 
-
 import (
-    "fmt"
-    "github.com/alexflint/go-arg"
+	"fmt"
+	"github.com/jessevdk/go-flags"
 )
 
-var cli_args struct {
-	target string `arg:"required"`
+type Options struct {
+    Verbose []bool `short:"v" long:"verbose" description:"Show verbose debug information"`
 }
 
+
 func main() {
-    arg.MustParse(&cli_args)
-    fmt.Println("hello world")
+    flags.Parse(&Options)
+	fmt.Println(Options.Verbose)
 }

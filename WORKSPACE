@@ -3,7 +3,7 @@ workspace(name = "bzl_ndn")
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 # TODO:
-# check before running 
+# check before running
 # /home/hackbee/.cache/bazel/_bazel_hackbee/install/931d2cae65e6b56271b36503c62cdec6/embedded_tools/platforms/BUILD
 # check after running //:gazelle
 # why it is getting corrupted
@@ -35,7 +35,7 @@ http_archive(
 load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies")
 load("//:deps.bzl", "go_dependencies")
 
+gazelle_dependencies()
+
 # gazelle:repository_macro deps.bzl%go_dependencies
 go_dependencies()
-
-gazelle_dependencies()
