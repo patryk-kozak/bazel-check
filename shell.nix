@@ -9,7 +9,7 @@ pkgs.mkShell {
     git
     go_1_17
   ];
-  shellHook = ''
-    echo "startup --output_base $(readlink -f ./bazel-output)" > "$(pwd)"/.shell-bazelrc
-  '';
+  #shellHook = ''
+  #  echo "startup --output_base $(readlink -f ./bazel-output)" > "$(pwd)"/.shell-bazelrc
+  #'';
 }
