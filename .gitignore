@@ -1,7 +1,6 @@
-bazel-output/
+.idea
 bazel-bazel-check
 bazel-bin
-bazel-testlogs
 bazel-out
-
-.shell-bazelrc
+bazel-testlogs
+.output-bazelrc

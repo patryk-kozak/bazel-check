@@ -1,15 +1,8 @@
-load("@bazel_gazelle//:def.bzl", "gazelle")
+load("@bazel_ndn//ndn:rule.bzl", "ndn")
 
-# gazelle:prefix github.com/patryk-kozak/bzl-ndn
-gazelle(name = "gazelle")
+print("<< >> build load init")
 
-gazelle(
-    name = "gazelle-update-repos",
-    args = [
-        "-from_file=go.mod",
-        "-to_macro=deps.bzl%go_dependencies",
-        "-prune",
-        "-build_file_proto_mode=disable_global",
-    ],
-    command = "update-repos",
+ndn(
+    name = "test", 
+    targets = "//...",
 )
