@@ -1,5 +1,7 @@
-def main(name: str):
-    print(f"{name}")
+import sys
+
+def main(targets: str):
+    print(f"{targets}")
 
 if __name__ == '__main__':
-    main("test")
+    main(sys.argv[1])

@@ -1,0 +1,20 @@
+#!/usr/bin/env sh
+
+echo "first log = $1"
+echo "second log = $2"
+
+set -euo pipefail
+
+WWD=$(realpath $2)
+echo ">> <<< WWD - $WWD"
+cd $WWD
+
+echo "Building all of the #TARGETS#"
+
+bazel build --experimental_execution_log_file=$1 #TARGETS#
+
+echo "Rebuilding all of the #TARGETS#"
+
+bazel clean
+bazel build --experimental_execution_log_file=$2 #TARGETS#
+

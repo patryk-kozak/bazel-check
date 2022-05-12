@@ -21,11 +21,32 @@ http_archive(
     url = "https://github.com/bazelbuild/rules_python/archive/refs/tags/0.8.1.tar.gz",
 )
 
-load("@rules_python//python:repositories.bzl", "python_register_toolchains")
-
-python_register_toolchains(
-    name = "python3_9",
-    python_version = "3.9",
+# we need tools from bazel, or write our own parser, but it seems easier to fetch tools
+# TODO: actually just copy source from bazel and compile under rules
+# this should be quite compatible with upstream and will not require to fetch entire bazel
+http_archive(
+    name = "io_bazel",
+    sha256 = "a394a99cae2d28179e1afca5f5e867fe36143478b81ccb5713d003dd827cc0fe",
+    strip_prefix = "bazel-5.1.0",
+    urls = [
+        "https://github.com/bazelbuild/bazel/archive/5.1.0.zip",
+    ],
 )
 
-load("@python3_9//:defs.bzl", "interpreter")
+# io_bazel dep
+http_archive(
+    name = "com_google_protobuf",
+    sha256 = "bf0e5070b4b99240183b29df78155eee335885e53a8af8683964579c214ad301",
+    strip_prefix = "protobuf-3.14.0",
+    type = "zip",
+    urls = [
+        "https://github.com/protocolbuffers/protobuf/archive/v3.14.0.zip",
+    ],
+)
+
+load(
+    "@com_google_protobuf//:protobuf_deps.bzl",
+    "protobuf_deps",
+)
+
+protobuf_deps()

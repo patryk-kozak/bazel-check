@@ -1,7 +1,5 @@
 load("@bazel_ndn//ndn:rule.bzl", "ndn")
 
-print("<< >> build load init")
-
 ndn(
     name = "test", 
     targets = "//...",
